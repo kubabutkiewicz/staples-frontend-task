@@ -1,28 +1,25 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1 v-if="this.loading">Loading...</h1>
+    <ProductsList></ProductsList>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-
+import { mapActions, mapState } from "vuex";
+import ProductsList from "./components/ProductsList";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld,
+    ProductsList
   },
+  computed: {
+    ...mapState({
+      loading: "loading"
+    })
+  }
 };
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
