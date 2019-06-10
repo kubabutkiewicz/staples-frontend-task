@@ -6,7 +6,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     products: [],
-    currentPage: 1,
     loading: false,
   },
   mutations: {
@@ -16,25 +15,13 @@ export default new Vuex.Store({
     LOADING(state) {
       state.loading = !state.loading;
     },
-    CHANGE_PAGE(state, payload) {
-      switch (payload.value) {
-        case 'next':
-          state.currentPage += 1;
-          break;
-        case 'prev':
-          state.currentPage += 1;
-          break;
-        default:
-          state.currentPage = payload.value;
-      }
-    },
   },
   actions: {
-    getProducts({ commit, state }) {
+    getProducts({ commit }, pageNumber = 1) {
       commit({
         type: 'LOADING',
       });
-      fetch(`http://localhost:3005/products?_page=${state.currentPage}`)
+      fetch(`http://localhost:3005/products?_page=${pageNumber}`)
         .then(resp => resp.json())
         .then((prod) => {
           commit({

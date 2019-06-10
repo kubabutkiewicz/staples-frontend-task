@@ -11,6 +11,7 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
+    "vuejs-paginate": "^2.1.0",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
@@ -24,7 +25,10 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-vue": "^5.2.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.10"
@@ -35,10 +39,98 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
+      "plugin:vue/recommended",
       "@vue/airbnb"
     ],
-    "rules": {},
+    "rules": {
+      "max-len": [
+        0
+      ],
+      "import/no-unresolved": "off",
+      "no-unused-expressions": [
+        "error",
+        {
+          "allowTernary": true
+        }
+      ],
+      "no-param-reassign": 0,
+      "quote-props": [
+        "error",
+        "consistent"
+      ],
+      "vue/order-in-components": [
+        "error",
+        {
+          "order": [
+            "el",
+            "name",
+            "parent",
+            "functional",
+            [
+              "delimiters",
+              "comments"
+            ],
+            [
+              "components",
+              "directives",
+              "filters"
+            ],
+            "extends",
+            "mixins",
+            "inheritAttrs",
+            "model",
+            [
+              "props",
+              "propsData"
+            ],
+            "data",
+            "computed",
+            "watch",
+            "LIFECYCLE_HOOKS",
+            "methods",
+            [
+              "template",
+              "render"
+            ],
+            "renderError"
+          ]
+        }
+      ],
+      "vue/html-closing-bracket-newline": [
+        "error",
+        {
+          "singleline": "never",
+          "multiline": "never"
+        }
+      ],
+      "vue/html-closing-bracket-spacing": [
+        "error",
+        {
+          "startTag": "never",
+          "endTag": "never",
+          "selfClosingTag": "always"
+        }
+      ],
+      "vue/script-indent": [
+        "error",
+        2,
+        {
+          "baseIndent": 0,
+          "switchCase": 1,
+          "ignores": []
+        }
+      ],
+      "vue/max-attributes-per-line": [
+        2,
+        {
+          "singleline": 1,
+          "multiline": {
+            "max": 1,
+            "allowFirstLine": false
+          }
+        }
+      ]
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

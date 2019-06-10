@@ -1,29 +1,33 @@
 <template>
   <ul>
-    <li v-for="product in products" :key="product.id">
-      <h2>{{product.brand.name}}</h2>
-      <p>{{product.general.description }}</p>
+    <li
+      v-for="product in products"
+      :key="product.id">
+      <h2>{{ product.brand.name }}</h2>
+      <p>{{ product.general.description }}</p>
     </li>
   </ul>
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState } from 'vuex';
+
 export default {
-  name: "ProductsList",
+  name: 'ProductsList',
   computed: {
     ...mapState({
-      products: "products"
-    })
-  },
-  methods: {
-    ...mapActions({
-      getProducts: "getProducts"
-    })
+      products: 'products',
+    }),
   },
   mounted() {
     this.getProducts();
-  }
+  },
+  methods: {
+    ...mapActions({
+      getProducts: 'getProducts',
+    }),
+  },
+
 };
 </script>
 
