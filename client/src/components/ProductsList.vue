@@ -1,30 +1,20 @@
 <template>
   <ul>
-    <li
+    <Product
       v-for="product in products"
-      :key="product.id">
-      <img
-        :src="product.images.primary.large"
-        alt="Product image">
-      <h2>{{ product.general.name }}</h2>
-      <p>{{ product.general.presentable_id }}</p>
-      <input
-        v-model="quantity"
-        type="text">
-      <button>Add</button>
-    </li>
+      :key="product.id"
+      :data="product" />
   </ul>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex';
+import Product from './Product.vue';
 
 export default {
   name: 'ProductsList',
-  data() {
-    return {
-      quantity: 0,
-    };
+  components: {
+    Product,
   },
   computed: {
     ...mapState({
