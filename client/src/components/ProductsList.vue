@@ -3,8 +3,15 @@
     <li
       v-for="product in products"
       :key="product.id">
-      <h2>{{ product.brand.name }}</h2>
-      <p>{{ product.general.description }}</p>
+      <img
+        :src="product.images.primary.large"
+        alt="Product image">
+      <h2>{{ product.general.name }}</h2>
+      <p>{{ product.general.presentable_id }}</p>
+      <input
+        v-model="quantity"
+        type="text">
+      <button>Add</button>
     </li>
   </ul>
 </template>
@@ -14,6 +21,11 @@ import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'ProductsList',
+  data() {
+    return {
+      quantity: 0,
+    };
+  },
   computed: {
     ...mapState({
       products: 'products',
