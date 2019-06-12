@@ -10,6 +10,7 @@ export default new Vuex.Store({
     page: 1,
     isModalOpen: false,
     modalData: null,
+    pageCount: 0,
 
   },
   mutations: {
@@ -33,10 +34,28 @@ export default new Vuex.Store({
       state.isModalOpen = false;
       state.modalData = null;
     },
+    SET_PAGE_COUNT(state, payload) {
+      state.pageCount = payload.pageCount;
+    },
 
   },
   actions: {
-
+    getPageCount({ commit }) {
+      commit({
+        type: 'LOADING',
+      });
+      fetch('http://localhost:3005/db')
+        .then(resp => resp.json())
+        .then((prod) => {
+          commit({
+            type: 'SET_PAGE_COUNT',
+            pageCount: Math.ceil(prod.products.length / 6),
+          });
+          commit({
+            type: 'LOADING',
+          });
+        });
+    },
     getProducts({ commit }, pageNumber = 1) {
       commit({
         type: 'LOADING',
@@ -44,7 +63,6 @@ export default new Vuex.Store({
       fetch(`http://localhost:3005/products?_page=${pageNumber}&_limit=6`)
         .then(resp => resp.json())
         .then((prod) => {
-          console.log(prod);
           commit({
             type: 'ADD_PRODUCTS',
             products: prod,
@@ -64,6 +82,10 @@ export default new Vuex.Store({
           commit({
             type: 'FILTER_PRODUCTS',
             products: prod,
+          });
+          commit({
+            type: 'SET_PAGE_COUNT',
+            pageCount: Math.ceil(prod.length / 6),
           });
           commit({
             type: 'LOADING',

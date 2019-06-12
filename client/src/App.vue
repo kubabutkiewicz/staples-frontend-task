@@ -10,7 +10,7 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import ProductsList from './components/ProductsList.vue';
 import Pagination from './components/Pagination.vue';
 import Modal from './components/Modal.vue';
@@ -26,6 +26,14 @@ export default {
   },
   computed: {
     ...mapState(['loading', 'isModalOpen']),
+  },
+  mounted() {
+    this.getPageCount();
+  },
+  methods: {
+    ...mapActions({
+      getPageCount: 'getPageCount',
+    }),
   },
 };
 </script>

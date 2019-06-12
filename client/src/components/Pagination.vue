@@ -1,14 +1,14 @@
 <template>
   <paginate
     v-model="page"
-    :page-count="24"
+    :page-count="pageCount"
     :click-handler="clickCallback"
     :prev-text="'Prev'"
     :next-text="'Next'" />
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import Paginate from 'vuejs-paginate';
 
 export default {
@@ -17,6 +17,7 @@ export default {
     paginate: Paginate,
   },
   computed: {
+    ...mapState(['pageCount']),
     page: {
       get() {
         return this.$store.state.page;
