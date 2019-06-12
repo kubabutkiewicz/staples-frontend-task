@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div @click="openModal">
     <img
       :src="data.images.primary.large"
-      alt="data image">
+      alt="product image">
     <h2>{{ data.general.name }}</h2>
     <p>{{ data.general.presentable_id }}</p>
     <input
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   name: 'Product',
   props: {
@@ -25,6 +27,14 @@ export default {
     return {
       quantity: 0,
     };
+  },
+  computed: {
+    ...mapMutations(['OPEN_MODAL']),
+  },
+  methods: {
+    openModal() {
+      this.$store.commit('OPEN_MODAL', this.data.id);
+    },
   },
 };
 </script>

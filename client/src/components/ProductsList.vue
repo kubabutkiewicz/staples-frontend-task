@@ -19,6 +19,7 @@ export default {
   computed: {
     ...mapState({
       products: 'products',
+      filteredProducts: 'filteredProducts',
     }),
   },
   mounted() {
