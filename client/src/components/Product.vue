@@ -1,14 +1,38 @@
 <template>
-  <div @click="openModal">
+  <div
+    class="bg-white p-8 mb-4 flex flex-col justify-center items-center rounded"
+    @click="openModal">
     <img
       :src="data.images.primary.large"
-      alt="product image">
-    <h2>{{ data.general.name }}</h2>
-    <p>{{ data.general.presentable_id }}</p>
-    <input
-      v-model="quantity"
-      type="text">
-    <button>Add</button>
+      alt="product image"
+      class="mb-8">
+    <div class="self-start">
+      <h2 class="font-bold text-lg w-40 mb-2">
+        {{ data.general.name }}
+      </h2>
+      <p class="text-sm text-gray-500">
+        {{ data.general.presentable_id }}
+      </p>
+    </div>
+    <div class="mt-8 mb-8 self-start">
+      <button
+        class="px-4 py-2 text-white bg-orange-300 rounded focus:outline-none"
+        @click="subtractQuantity">
+        -
+      </button>
+      <input
+        v-model="quantity"
+        type="text"
+        class="mb-4 w-10 text-center focus:outline-none">
+      <button
+        class="px-4 py-2 text-white bg-orange-300 rounded focus:outline-none"
+        @click="addQuantity">
+        +
+      </button>
+    </div>
+    <button class="w-full py-2 rounded text-white bg-orange-600">
+      Add to cart
+    </button>
   </div>
 </template>
 
@@ -35,10 +59,18 @@ export default {
     openModal() {
       this.$store.commit('OPEN_MODAL', this.data.id);
     },
+    addQuantity() {
+      this.quantity += 1;
+    },
+    subtractQuantity() {
+      if (this.quantity > 0) {
+        this.quantity -= 1;
+      }
+    },
   },
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 
 </style>

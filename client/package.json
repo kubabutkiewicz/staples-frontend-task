@@ -9,6 +9,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@saeris/vue-spinners": "^1.0.8",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vuejs-paginate": "^2.1.0",
@@ -31,6 +32,8 @@
     "eslint-plugin-vue": "^5.2.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
+    "tailwindcss": "^1.0.4",
+    "tailwindcss-transition": "^1.0.5",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
@@ -137,6 +140,7 @@
   },
   "postcss": {
     "plugins": {
+      "tailwindcss": "./tailwind.js",
       "autoprefixer": {}
     }
   },

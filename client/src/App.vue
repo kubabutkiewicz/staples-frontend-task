@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
-    <h1 v-if="loading">
-      Loading...
-    </h1>
+  <div
+    id="app"
+    class="container mx-auto px-6 flex flex-col bg-gray-200">
+    <BeatLoader :loading="loading" />
     <Modal v-if="isModalOpen" />
     <SearchInput />
     <ProductsList />
@@ -11,10 +11,12 @@
 </template>
 <script>
 import { mapState, mapActions } from 'vuex';
+import { BeatLoader } from '@saeris/vue-spinners';
 import ProductsList from './components/ProductsList.vue';
 import Pagination from './components/Pagination.vue';
 import Modal from './components/Modal.vue';
 import SearchInput from './components/SearchInput.vue';
+import './assets/css/main.css';
 
 export default {
   name: 'App',
@@ -23,6 +25,7 @@ export default {
     Pagination,
     Modal,
     SearchInput,
+    BeatLoader,
   },
   computed: {
     ...mapState(['loading', 'isModalOpen']),
@@ -39,4 +42,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:300,400&display=swap');
+body {
+  font-family: "Open Sans";
+}
 </style>
