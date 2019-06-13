@@ -3,8 +3,10 @@
     v-model="page"
     :page-count="pageCount"
     :click-handler="clickCallback"
-    :prev-text="'Prev'"
-    :next-text="'Next'" />
+    :prev-text="'&leftarrow;'"
+    :next-text="'&rightarrow;'"
+    :page-class="'page'"
+    class="flex items-center justify-around m-8 px-8 py-4 bg-white max-w-xl mx-auto" />
 </template>
 
 <script>
@@ -38,6 +40,12 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang=css>
+  .active {
+    background-color: #f6ad55;
+    color: white;
+  }
+  .page {
+    padding: 5px 10px;
+  }
 </style>

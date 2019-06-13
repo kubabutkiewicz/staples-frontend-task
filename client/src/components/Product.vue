@@ -1,7 +1,7 @@
 <template>
   <div
-    class="bg-white p-8 mb-4 flex flex-col justify-center items-center rounded"
-    @click="openModal">
+    class="bg-white p-8 mb-8 flex flex-col justify-center items-center rounded max-w-md"
+    @click.self="openModal">
     <img
       :src="data.images.primary.large"
       alt="product image"

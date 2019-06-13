@@ -46,4 +46,15 @@ export default {
 body {
   font-family: "Open Sans";
 }
+span {
+  display: block;
+  margin-top: 10px;
+  #readmore {
+  background-color: #f6ad55;
+  padding: 3px 15px;
+  color: white;
+  border-radius: 20px;
+}
+}
+
 </style>

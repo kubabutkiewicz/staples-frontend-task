@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="flex flex-col flex-wrap md:flex-row md:justify-around">
     <Product
       v-for="product in products"
       :key="product.id"

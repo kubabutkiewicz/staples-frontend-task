@@ -9,9 +9,13 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@fortawesome/vue-fontawesome": "^0.1.6",
     "@saeris/vue-spinners": "^1.0.8",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
+    "vue-read-more": "^1.1.1",
     "vuejs-paginate": "^2.1.0",
     "vuex": "^3.0.1"
   },
@@ -33,6 +37,7 @@
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
     "tailwindcss": "^1.0.4",
+    "tailwindcss-alpha": "^0.1.4",
     "tailwindcss-transition": "^1.0.5",
     "vue-template-compiler": "^2.6.10"
   },
