@@ -10,7 +10,8 @@ export default new Vuex.Store({
     page: 1,
     isModalOpen: false,
     modalData: null,
-    pageCount: 0,
+    cart: [],
+    cartCount: localStorage.getItem('shoppingCart') || 0,
 
   },
   mutations: {
@@ -34,28 +35,14 @@ export default new Vuex.Store({
       state.isModalOpen = false;
       state.modalData = null;
     },
-    SET_PAGE_COUNT(state, payload) {
-      state.pageCount = payload.pageCount;
+    ADD_TO_CART(state, payload) {
+      state.cart = [...state.cart, payload.obj];
+      state.cartCount += payload.obj.quantity;
+      localStorage.setItem('shoppingCart', state.cartCount);
     },
 
   },
   actions: {
-    getPageCount({ commit }) {
-      commit({
-        type: 'LOADING',
-      });
-      fetch('http://localhost:3005/db')
-        .then(resp => resp.json())
-        .then((prod) => {
-          commit({
-            type: 'SET_PAGE_COUNT',
-            pageCount: Math.ceil(prod.products.length / 6),
-          });
-          commit({
-            type: 'LOADING',
-          });
-        });
-    },
     getProducts({ commit }, pageNumber = 1) {
       commit({
         type: 'LOADING',

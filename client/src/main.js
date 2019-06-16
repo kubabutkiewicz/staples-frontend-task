@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTimes, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import ReadMore from 'vue-read-more';
@@ -9,7 +9,7 @@ import App from './App.vue';
 
 Vue.use(ReadMore);
 
-library.add(faSearch, faTimes);
+library.add(faSearch, faTimes, faShoppingCart);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white p-8 mb-8 flex flex-col justify-center items-center rounded max-w-md"
+    class="bg-white p-8 mb-8 flex flex-col justify-center items-center rounded-lg max-w-md"
     @click.self="openModal">
     <img
       :src="data.images.primary.large"
@@ -30,7 +30,9 @@
         +
       </button>
     </div>
-    <button class="w-full py-2 rounded text-white bg-orange-600">
+    <button
+      class="w-full py-2 rounded text-white bg-orange-600"
+      @click="addToCart">
       Add to cart
     </button>
   </div>
@@ -53,11 +55,24 @@ export default {
     };
   },
   computed: {
-    ...mapMutations(['OPEN_MODAL']),
+    ...mapMutations(['OPEN_MODAL', 'ADD_TO_CART']),
   },
   methods: {
     openModal() {
       this.$store.commit('OPEN_MODAL', this.data.id);
+    },
+    addToCart() {
+      if (this.quantity > 0) {
+        this.$store.commit({
+          type: 'ADD_TO_CART',
+          obj: {
+            item: this.data,
+            quantity: this.quantity,
+          },
+        });
+      }
+
+      this.quantity = 0;
     },
     addQuantity() {
       this.quantity += 1;
@@ -70,7 +85,3 @@ export default {
   },
 };
 </script>
-
-<style scoped lang="scss">
-
-</style>

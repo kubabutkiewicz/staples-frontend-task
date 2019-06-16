@@ -1,5 +1,5 @@
 <template>
-  <ul class="flex flex-col flex-wrap md:flex-row md:justify-around">
+  <ul class="flex flex-col flex-wrap lg:flex-row md:justify-between items-center">
     <Product
       v-for="product in products"
       :key="product.id"
@@ -33,6 +33,3 @@ export default {
 
 };
 </script>
-
-<style>
-</style>

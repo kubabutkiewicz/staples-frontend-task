@@ -1,21 +1,28 @@
 <template>
   <div
     id="app"
-    class="container mx-auto px-6 flex flex-col bg-gray-200">
-    <BeatLoader :loading="loading" />
-    <Modal v-if="isModalOpen" />
-    <SearchInput />
-    <ProductsList />
-    <Pagination />
+    class="bg-gray-200">
+    <main class="container mx-auto px-6 flex flex-col">
+      <BeatLoader
+        :loading="loading" />
+      <Modal v-if="isModalOpen" />
+      <div class="flex justify-between mt-5">
+        <SearchInput />
+        <CartIcon />
+      </div>
+      <ProductsList />
+      <Pagination />
+    </main>
   </div>
 </template>
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState } from 'vuex';
 import { BeatLoader } from '@saeris/vue-spinners';
 import ProductsList from './components/ProductsList.vue';
 import Pagination from './components/Pagination.vue';
 import Modal from './components/Modal.vue';
 import SearchInput from './components/SearchInput.vue';
+import CartIcon from './components/CartIcon.vue';
 import './assets/css/main.css';
 
 export default {
@@ -26,17 +33,10 @@ export default {
     Modal,
     SearchInput,
     BeatLoader,
+    CartIcon,
   },
   computed: {
     ...mapState(['loading', 'isModalOpen']),
-  },
-  mounted() {
-    this.getPageCount();
-  },
-  methods: {
-    ...mapActions({
-      getPageCount: 'getPageCount',
-    }),
   },
 };
 </script>
