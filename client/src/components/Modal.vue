@@ -106,14 +106,6 @@ export default {
     opacity: 1;
   }
 }
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
 .animate {
   animation: fadeIn 0.2s ease-in-out;
 }

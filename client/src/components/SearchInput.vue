@@ -7,7 +7,6 @@
       v-model="query"
       type="text"
       class="input w-full absolute rounded-full border-orange-300 transition focus:shadow-md focus:outline-none px-6 py-1">
-
     <button
       type="submit"
       class="px-6 py-1 rounded-full text-white bg-orange-300 hover:bg-orange-500 transition absolute right-0">
@@ -18,6 +17,7 @@
 
 <script>
 import { mapActions } from 'vuex';
+
 
 export default {
   name: 'SearchInput',

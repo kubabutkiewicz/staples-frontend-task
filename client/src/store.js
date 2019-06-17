@@ -11,7 +11,7 @@ export default new Vuex.Store({
     isModalOpen: false,
     modalData: null,
     cart: [],
-    cartCount: localStorage.getItem('shoppingCart') || 0,
+    cartCount: JSON.parse(localStorage.getItem('shoppingCart')),
 
   },
   mutations: {
@@ -48,7 +48,10 @@ export default new Vuex.Store({
         type: 'LOADING',
       });
       fetch(`http://localhost:3005/products?_page=${pageNumber}&_limit=6`)
-        .then(resp => resp.json())
+        .then((resp) => {
+          console.log(resp.headers.get('Link'));
+          return resp.json();
+        })
         .then((prod) => {
           commit({
             type: 'ADD_PRODUCTS',
@@ -69,10 +72,6 @@ export default new Vuex.Store({
           commit({
             type: 'FILTER_PRODUCTS',
             products: prod,
-          });
-          commit({
-            type: 'SET_PAGE_COUNT',
-            pageCount: Math.ceil(prod.length / 6),
           });
           commit({
             type: 'LOADING',
